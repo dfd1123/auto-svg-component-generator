@@ -1,8 +1,15 @@
 .rollup.cache
 *.log
-.vscode
 .DS_Store
+*.pem
 **/node_modules
 .cache
 node_modules
 dist
+build
+.next
+
+# debug
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
