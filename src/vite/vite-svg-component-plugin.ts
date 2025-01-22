@@ -14,7 +14,8 @@ const ViteSvgComponentPlugin = ({
   typescript,
   useSvgr,
   title,
-  description
+  description,
+  svgo
 }: VitePluginOptions) => ({
   name: 'vite-svg-component-plugin',
   buildStart() {
@@ -25,7 +26,8 @@ const ViteSvgComponentPlugin = ({
       typescript,
       useSvgr,
       title,
-      description
+      description,
+      svgo
     });
 
     if (process.env.NODE_ENV !== 'production') {

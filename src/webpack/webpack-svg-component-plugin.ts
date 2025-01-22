@@ -12,7 +12,7 @@ class WebpackSvgComponentPlugin {
   private readonly svgFileDir: string;
   private watcher?: FSWatcher;
 
-  constructor({ svgFileDir, outputDir, typescript, useSvgr, title, description }: WebpackPluginOptions) {
+  constructor({ svgFileDir, outputDir, typescript, useSvgr, title, description, svgo }: WebpackPluginOptions) {
     this.svgFileDir = path.join(process.cwd(), svgFileDir);
     this.svgCompGenerator = new SvgComponentGenerator({
       type: 'webpack-react',
@@ -21,7 +21,8 @@ class WebpackSvgComponentPlugin {
       typescript,
       useSvgr,
       title,
-      description
+      description,
+      svgo
     });
 
     process.once('SIGINT', () => {
