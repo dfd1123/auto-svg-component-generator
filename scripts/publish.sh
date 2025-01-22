@@ -230,6 +230,13 @@ else
     yarn publish --new-version $new_version --message "$release_message" || last_git_work_status="bad"
 fi
 
+# version.json Git 작업
+if [ "$last_git_work_status" = "normal" ]; then
+    git add -f package.json $version_file || { print_string "error" "Git New version add 실패"; last_git_work_status="bad"; }
+    git commit -m "update package.json, $version_file" || { print_string "error" "Git New version commit 실패"; last_git_work_status="bad"; }
+    git push origin $current_branch || { print_string "error" "Git New version push 실패"; last_git_work_status="bad"; }
+fi
+
 
 # 실패시 버전 롤백
 if [ "$last_git_work_status" = "bad" ]; then
