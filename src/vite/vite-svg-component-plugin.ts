@@ -6,7 +6,6 @@ type VitePluginOptions = Omit<SvgComponentGeneratorOption, 'type'> & {
 };
 
 let watcher: FSWatcher | null = null; // 전역 또는 모듈 수준의 변수로 watcher를 관리
-const fileRegex = /\.svg$/;
 
 const ViteSvgComponentPlugin = ({
   svgFileDir,
@@ -24,10 +23,7 @@ const ViteSvgComponentPlugin = ({
       svgFileDir,
       outputDir,
       typescript,
-      useSvgr,
-      title,
-      description,
-      svgo
+      ...(useSvgr ? { useSvgr: true } : { useSvgr: false, svgo, title, description })
     });
 
     if (process.env.NODE_ENV !== 'production') {

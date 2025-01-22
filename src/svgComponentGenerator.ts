@@ -21,6 +21,9 @@ type BaseSvgComponentGeneratorOption = {
 
 type UseSvgrSvgComponentGeneratorOption = BaseSvgComponentGeneratorOption & {
   useSvgr: true;
+  svgo?: never;
+  title?: never;
+  description?: never;
 }
 
 type SvgoSvgComponentGeneratorOption = BaseSvgComponentGeneratorOption & {

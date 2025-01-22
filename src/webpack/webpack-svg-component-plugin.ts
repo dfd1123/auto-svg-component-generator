@@ -4,7 +4,7 @@ import SvgComponentGenerator, { type SvgComponentGeneratorOption } from '../svgC
 import type { Compiler } from 'webpack';
 
 type WebpackPluginOptions = Omit<SvgComponentGeneratorOption, 'type'> & {
-  // Types
+  // types
 };
 
 class WebpackSvgComponentPlugin {
@@ -19,10 +19,7 @@ class WebpackSvgComponentPlugin {
       svgFileDir,
       outputDir,
       typescript,
-      useSvgr,
-      title,
-      description,
-      svgo
+      ...(useSvgr ? { useSvgr: true } : { useSvgr: false, svgo, title, description })
     });
 
     process.once('SIGINT', () => {
