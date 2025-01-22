@@ -64,17 +64,12 @@
     "svg",
     "component",
     "generator",
-    "auto",
-    "auto-svg-component-generator",
-    "svg-component-generator",
     "svg-component",
     "svg-generator",
     "svg-to-react",
-    "use-svg-component",
-    "use-svg-component-generator",
-    "use-svg-component-generator-react",
-    "use-svg-component-generator-react-component",
-    "use-svg-component-generator-react-component-generator",
-    "use-svg-component-generator-react-component-generator-auto"
+    "react-svg",
+    "react-component",
+    "svg-converter",
+    "svg-transformer"
   ]
 }
