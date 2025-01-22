@@ -4,7 +4,7 @@ import SvgComponentGenerator, { type SvgComponentGeneratorOption } from '../svgC
 import type { Compiler } from 'webpack';
 
 type WebpackPluginOptions = Omit<SvgComponentGeneratorOption, 'type'> & {
-  // Types
+  // types
 };
 
 class WebpackSvgComponentPlugin {
@@ -12,16 +12,14 @@ class WebpackSvgComponentPlugin {
   private readonly svgFileDir: string;
   private watcher?: FSWatcher;
 
-  constructor({ svgFileDir, outputDir, typescript, useSvgr, title, description }: WebpackPluginOptions) {
+  constructor({ svgFileDir, outputDir, typescript, useSvgr, title, description, svgo }: WebpackPluginOptions) {
     this.svgFileDir = path.join(process.cwd(), svgFileDir);
     this.svgCompGenerator = new SvgComponentGenerator({
       type: 'webpack-react',
       svgFileDir,
       outputDir,
       typescript,
-      useSvgr,
-      title,
-      description
+      ...(useSvgr ? { useSvgr: true } : { useSvgr: false, svgo, title, description })
     });
 
     process.once('SIGINT', () => {

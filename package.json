@@ -1,6 +1,6 @@
 {
   "name": "auto-svg-component-generator",
-  "version": "1.0.17-alpha",
+  "version": "1.0.19-alpha",
   "description": "AutoSvgComponentGenerator is a generator that automatically converts .svg files into React components. SvgComponentGenerator automatically generates index.tsx or index.jsx in React component format when .svg files are added, moved, modified or deleted.",
   "author": "Derek.Kim",
   "license": "MIT",
@@ -16,13 +16,16 @@
   ],
   "scripts": {
     "prepare": "yarn build",
+    "postinstall": "[ \"$NODE_ENV\" != \"production\" ] && yarn lefthook install || exit 0",
     "start": "NODE_ENV=development rollup -c && rollup -cw",
     "build": "rm -rf dist && NODE_ENV=production rollup -c",
     "svg-generate:test": "node src/test-svg-generate.js",
     "vite:test": "cd example/vite-project && yarn && yarn add auto-svg-component-generator@alpha && yarn dev",
-    "nextjs:test": "cd example/nextjs-project && yarn && yarn add auto-svg-component-generator@alpha && yarn dev"
+    "nextjs:test": "cd example/nextjs-project && yarn && yarn add auto-svg-component-generator@alpha && yarn dev",
+    "publish-ascg": "chmod +x ./scripts/publish.sh && ./scripts/publish.sh"
   },
   "devDependencies": {
+    "@arkweid/lefthook": "^0.7.7",
     "@babel/plugin-transform-runtime": "^7.25.9",
     "@babel/preset-env": "^7.26.0",
     "@babel/preset-typescript": "^7.26.0",
@@ -61,17 +64,12 @@
     "svg",
     "component",
     "generator",
-    "auto",
-    "auto-svg-component-generator",
-    "svg-component-generator",
     "svg-component",
     "svg-generator",
     "svg-to-react",
-    "use-svg-component",
-    "use-svg-component-generator",
-    "use-svg-component-generator-react",
-    "use-svg-component-generator-react-component",
-    "use-svg-component-generator-react-component-generator",
-    "use-svg-component-generator-react-component-generator-auto"
+    "react-svg",
+    "react-component",
+    "svg-converter",
+    "svg-transformer"
   ]
 }

@@ -1,7 +1,6 @@
 # AutoSvgComponentGenerator
 
-`AutoSvgComponentGenerator` is a generator that automatically converts `.svg` files into React components.<br />
-While traditional `svgr` converted `.svg` files into React components during the import process, using `SvgComponentGenerator` together with `svgr` detects when `.svg` files are added, moved, modified, or deleted, and automatically generates `index.tsx` or `index.jsx` in React component format.
+`AutoSvgComponentGenerator` is a generator that automatically converts `.svg` files into React components. `AutoSvgComponentGenerator` automatically generates `index.tsx` or `index.jsx` in React component format when `.svg` files are added, moved, modified or deleted.
 
 <br /><br />
 
@@ -110,9 +109,9 @@ export default defineConfig({
 | outputDir      | `string` | `svgFileDir`   | Output directory path where converted components will be stored. Default is `svgFileDir` |
 | typescript     | `boolean` | `false`        | Sets whether to use TypeScript. If `true`, generates `index.tsx` file and `types/index.d.ts`. If `false`, generates `index.jsx`                                               |
 | useSvgr        | `boolean` | `false`        | Sets whether to use `svgr`. If `true`, generates components using `svgr`. If `false`, doesn't use `svgr`                                                                 |
-| title          | `boolean` | `false`        | Sets whether to show the `title` tag of `svg` files. If `true`, shows the `title` tag. If `false`, doesn't show the `title` tag                                                                 |
-| description    | `boolean` | `false`        | Sets whether to show the `desc` tag of `svg` files. If `true`, shows the `desc` tag. If `false`, doesn't show the `desc` tag                                                                 |
-| svgo           | `Omit<SvgConfig, 'path'>` | `undefined`        | Sets `svgo` options when `useSvgr` is `false`                                                              |
+| title          | `boolean` | `false`        | Sets whether to show the `title` tag of `svg` files. If `true`, shows the `title` tag. If `false`, doesn't show the `title` tag (ignored when `useSvgr: true`)                                                                 |
+| description    | `boolean` | `false`        | Sets whether to show the `desc` tag of `svg` files. If `true`, shows the `desc` tag. If `false`, doesn't show the `desc` tag (ignored when `useSvgr: true`)                                                                 |
+| svgo           | `Omit<SvgConfig, 'path'>` | `undefined`        | Sets `svgo` options when `useSvgr` is `false` (ignored when `useSvgr: true`)       |
 <br />
 
 ```ts 
@@ -147,3 +146,4 @@ export default defineConfig({
 - For `next.js`, you must use `webpack` in `next.config.js`. (`turbopack` is not supported.)
 - When using the `useSvgr` option, you must install `svgr` and apply it to webpack before use.
 - It is recommended to use it with `svgr`. (`svgr` is relatively stable.)
+- When `useSvgr` is `true`, the `svgo`, `title`, and `description` options are ignored.
