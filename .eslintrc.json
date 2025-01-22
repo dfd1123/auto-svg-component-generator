@@ -1,0 +1,61 @@
+{
+    // [env] 프로젝트 환경 설정, 브라우저 환경과 ES2021 문법 사용
+    "env": {
+      "browser": true,
+      "node": true,
+      "es6": true
+    },
+    "parser": "@typescript-eslint/parser",
+    "plugins": ["@typescript-eslint", "prettier"],
+    "extends": [
+      "eslint:recommended", 
+      "plugin:import/errors",
+      "plugin:import/warnings",
+      "plugin:prettier/recommended",
+      "plugin:@typescript-eslint/eslint-recommended",
+      "plugin:@typescript-eslint/recommended",
+      "prettier"
+    ],
+    // [rules] 상세 규칙
+    "rules": {
+      "no-var": "warn",
+      // [error] Delete `␍` prettier/prettier
+      "prettier/prettier": ["error", { "endOfLine": "auto" }],
+      "eqeqeq": "warn",
+      // 불필요한 세미콜론 사용 시 에러 표시
+      "no-extra-semi": "error",
+      // 화살표 함수의 파라미터가 하나일때 괄호 생략
+      "arrow-parens": ["warn", "as-needed"],
+      // 사용하지 않는 변수가 있을 때 발생하는 경고 비활성화
+      "no-unused-vars": ["off"],
+      // 콘솔 사용 시 발생하는 경고 비활성화
+      "no-console": ["off"],
+      // export문이 하나일 때 default export 사용 권장 경고 비활성화
+      "import/prefer-default-export": ["off"],
+      // 디버그 허용
+      "no-debugger": "off",
+      "no-nested-ternary": 0,
+      // 파일의 경로가 틀렸는지 확인하는 옵션 false
+      "import/no-unresolved": ["error", {"caseSensitive": false}],
+      "linebreak-style": 0,
+      "import/extensions": 0,
+      "no-use-before-define": 0,
+      "@typescript-eslint/explicit-function-return-type": "warn",
+      "@typescript-eslint/explicit-module-boundary-types": "warn",
+      "import/no-extraneous-dependencies": [
+        "error",
+        {
+          "devDependencies": true,
+          "peerDependencies": true
+        }
+      ],
+      "no-shadow": 0
+    },
+    "settings": {
+      "import/resolver": {
+        "node": {
+          "extensions": [".js", ".jsx", ".ts", ".tsx"]
+        }
+      }
+    },
+  }

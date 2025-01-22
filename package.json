@@ -1,0 +1,59 @@
+{
+  "name": "auto-svg-component-generator",
+  "version": "1.0.17-alpha",
+  "description": "AutoSvgComponentGenerator is a generator that automatically converts .svg files into React components. SvgComponentGenerator automatically generates index.tsx or index.jsx in React component format when .svg files are added, moved, modified or deleted.",
+  "author": "Derek.Kim",
+  "license": "MIT",
+  "main": "./dist/index.cjs.js",
+  "module": "./dist/index.esm.js",
+  "types": "./dist/index.d.ts",
+  "typings": "dist/index.d.ts",
+  "engines": {
+    "node": ">=16"
+  },
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "prepare": "yarn build",
+    "start": "NODE_ENV=development rollup -c && rollup -cw",
+    "build": "rm -rf dist && NODE_ENV=production rollup -c",
+    "svg-generate:test": "node src/test-svg-generate.js",
+    "vite:test": "cd example/vite-project && yarn && yarn add auto-svg-component-generator@alpha && yarn dev",
+    "nextjs:test": "cd example/nextjs-project && yarn && yarn add auto-svg-component-generator@alpha && yarn dev"
+  },
+  "devDependencies": {
+    "@babel/plugin-transform-runtime": "^7.25.9",
+    "@babel/preset-env": "^7.26.0",
+    "@babel/preset-typescript": "^7.26.0",
+    "@babel/register": "^7.25.9",
+    "@rollup/plugin-babel": "^6.0.4",
+    "@rollup/plugin-commonjs": "^28.0.2",
+    "@rollup/plugin-json": "^6.1.0",
+    "@rollup/plugin-node-resolve": "^16.0.0",
+    "@rollup/plugin-terser": "^0.4.4",
+    "@rollup/plugin-typescript": "^12.1.2",
+    "@types/fs-extra": "^11.0.4",
+    "@types/lodash": "^4.17.14",
+    "@typescript-eslint/eslint-plugin": "^8.21.0",
+    "@typescript-eslint/parser": "^8.21.0",
+    "eslint": "^9.18.0",
+    "eslint-config-prettier": "^10.0.1",
+    "eslint-plugin-import": "^2.31.0",
+    "eslint-plugin-prettier": "^5.2.3",
+    "prettier": "^3.4.2",
+    "rollup": "^4.31.0",
+    "rollup-plugin-babel": "^4.4.0",
+    "rollup-plugin-ignore": "^1.0.10",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.7.3",
+    "vite-plugin-svgr": "^4.3.0",
+    "webpack": "^5.97.1"
+  },
+  "dependencies": {
+    "chokidar": "^4.0.3",
+    "fs-extra": "^11.3.0",
+    "lodash": "^4.17.21",
+    "svgo": "^3.2.0"
+  }
+}
