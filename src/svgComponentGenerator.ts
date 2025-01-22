@@ -9,16 +9,28 @@ import _camelCase from 'lodash/camelCase';
 
 const { readdir, readFile, writeFile, mkdir } = promises;
 
-export type SvgComponentGeneratorOption = {
+type BaseSvgComponentGeneratorOption = {
   type?: 'webpack-react' | 'webpack-vue' | 'vite-react' | 'vite-vue' | 'turbopack-react';
   svgFileDir: string;
   outputDir?: string;
   typescript?: boolean;
-  useSvgr?: boolean;
   title?: boolean;
   description?: boolean;
   svgo?: Omit<SvgConfig, 'path'>;
-};
+}
+
+type UseSvgrSvgComponentGeneratorOption = BaseSvgComponentGeneratorOption & {
+  useSvgr: true;
+}
+
+type SvgoSvgComponentGeneratorOption = BaseSvgComponentGeneratorOption & {
+  useSvgr?: false;
+  svgo: Omit<SvgConfig, 'path'>;
+  title?: boolean;
+  description?: boolean;
+}
+
+export type SvgComponentGeneratorOption = UseSvgrSvgComponentGeneratorOption | SvgoSvgComponentGeneratorOption;
 
 /**
  * SvgComponentGenerator 클래스는 SVG 파일들을 React 컴포넌트로 변환합니다.
@@ -68,10 +80,10 @@ class SvgComponentGenerator {
     svgFileDir,
     outputDir,
     typescript = false,
-    useSvgr = false,
-    title = false,
-    description = false,
-    svgo = {}
+    title,
+    description,
+    useSvgr,
+    svgo
   }: SvgComponentGeneratorOption) {
     this.type = type;
     this.svgFileDir = svgFileDir;
@@ -80,7 +92,7 @@ class SvgComponentGenerator {
     this.useSvgr = useSvgr;
     this.title = title;
     this.description = description;
-    this.svgo = svgo;
+    this.svgo = svgo ?? {};
   }
 
   /**
