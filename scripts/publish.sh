@@ -241,6 +241,13 @@ fi
 # 실패시 버전 롤백
 if [ "$last_git_work_status" = "bad" ]; then
     update_version_file "$version_file" "$version"
+    
+    if [[ "$OSTYPE" == "darwin"* ]]; then
+        sed -i '' "s/\"version\": *\"[^\"]*\"/\"version\": \"$version\"/" package.json
+    else
+        sed -i "s/\"version\": *\"[^\"]*\"/\"version\": \"$version\"/" package.json
+    fi
+
     exit 1
 fi
 
