@@ -1,6 +1,6 @@
 {
   "name": "auto-svg-component-generator",
-  "version": "1.0.18-alpha",
+  "version": "1.0.19-alpha",
   "description": "AutoSvgComponentGenerator is a generator that automatically converts .svg files into React components. SvgComponentGenerator automatically generates index.tsx or index.jsx in React component format when .svg files are added, moved, modified or deleted.",
   "author": "Derek.Kim",
   "license": "MIT",
