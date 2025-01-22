@@ -15,7 +15,6 @@
     "dist"
   ],
   "scripts": {
-    "prepare": "yarn build",
     "postinstall": "[ \"$NODE_ENV\" != \"production\" ] && yarn lefthook install || exit 0",
     "start": "NODE_ENV=development rollup -c && rollup -cw",
     "build": "rm -rf dist && NODE_ENV=production rollup -c",
@@ -58,6 +57,13 @@
     "fs-extra": "^11.3.0",
     "lodash": "^4.17.21",
     "svgo": "^3.2.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/dfd1123/auto-svg-component-generator"
+  },
+  "bugs": {
+    "url": "https://github.com/dfd1123/auto-svg-component-generator/issues"
   },
   "keywords": [
     "react",
